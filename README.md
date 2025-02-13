@@ -23,3 +23,4 @@ TODO
 ## References
 
 * [Proxmox VE inside VirtualBox](https://pve.proxmox.com/wiki/Proxmox_VE_inside_VirtualBox)
+* [VirtualBox configuration](https://developer.hashicorp.com/vagrant/docs/providers/virtualbox/configuration)
