@@ -3,6 +3,7 @@
   let tools = with pkgs; [
     terraform
     vagrant
+    virtualbox
   ];
 
   in pkgs.mkShell {
