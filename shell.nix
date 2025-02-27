@@ -7,5 +7,5 @@
 
   in pkgs.mkShell {
     packages = tools;
-    inputsFrom = with pkgs; all;
+    inputsFrom = with pkgs; tools;
   }
