@@ -12,13 +12,19 @@ curl -L https://nixos.org/nix/install | sh
 # (Optional) Enable experimental features to search packages from CLI
 nix --extra-experimental-features "nix-command flakes" search nixpkgs terraform
 
-# Launch nix-shell
-nix-shell 
 ```
 
 ## Usage
 
-TODO
+Launch nix-shell:
+```shell
+nix-shell
+```
+
+Launch Vagrant:
+```shell
+vagrant up --provider=qemu
+```
 
 ## References
 
