@@ -1,10 +1,13 @@
 Vagrant.configure("2") do |config|
   config.vm.box = "debian/jessie64"
   #config.vm.box_version = "8.11.1"
-  config.vm.provider "virtualbox" do |vb|
-    vb.memory = 4096
-    vb.cpus = 4
+  config.vm.provider "qemu" do |qemu|
+    qemu.memory = 4096
+    qemu.cpus = 4
+    qemu.disk_size = 64_000
   end
+
+  config.vm.synced_folder ".", "/vagrant", type: "rsync", rsync__exclude: ".vagrant/"
 
   config.vm.provision "shell", inline: <<-SHELL
     apt update && apt upgrade -y
