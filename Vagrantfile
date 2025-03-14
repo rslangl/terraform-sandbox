@@ -1,13 +1,18 @@
 Vagrant.configure("2") do |config|
-  config.vm.box = "debian/jessie64"
-  #config.vm.box_version = "8.11.1"
+  config.vm.box = "debian/buster64"
   config.vm.provider "qemu" do |qemu|
+    qemu.qemu_dir = "/nix/store/9yx2h4h08pbi5lisl9jq97vrs744ji1w-qemu-8.2.4/bin"
+    qemu.arch = "x86_64"
+    qemu.machine = "q35"  # emulate a modern intel-based chipset with PCIe support
     qemu.memory = 4096
-    qemu.cpus = 4
+    #qemu.cpus = 4
+    qemu.cpu = "max"  # use full feature set and max performance of the host CPU
+    qemu.net_device = "virtio-net-pci"
     qemu.disk_size = 64_000
   end
 
   config.vm.synced_folder ".", "/vagrant", type: "rsync", rsync__exclude: ".vagrant/"
+  config.vm.boot_timeout = 400
 
   config.vm.provision "shell", inline: <<-SHELL
     apt update && apt upgrade -y
