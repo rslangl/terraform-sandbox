@@ -7,11 +7,13 @@ Vagrant.configure("2") do |config|
     qemu.memory = 4096
     qemu.cpu = "max"  # use full feature set and max performance of the host CPU
     qemu.net_device = "virtio-net-pci"
+    #qemu.ssh_port = 5555 # use different port for the QEMU instance
     qemu.disk_size = 64_000
   end
 
   config.vm.synced_folder ".", "/vagrant", type: "rsync", rsync__exclude: ".vagrant/"
   config.vm.boot_timeout = 400
+  #config.vm.network "forwarded_port", guest: 22, host: 5555
 
   config.vm.provision "shell", inline: <<-SHELL
     export DEBIAN_FRONTEND=noninteractive
