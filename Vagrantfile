@@ -1,7 +1,7 @@
 Vagrant.configure("2") do |config|
   config.vm.box = "debian/buster64"
   config.vm.provider "qemu" do |qemu|
-    qemu.qemu_dir = "dirname $(which qemu-system-x86_64)"
+    qemu.qemu_dir = `dirname $(which qemu-system-x86_64)`.chomp
     qemu.arch = "x86_64"
     qemu.machine = "q35"  # emulate a modern intel-based chipset with PCIe support
     qemu.memory = 4096
