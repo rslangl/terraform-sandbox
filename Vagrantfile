@@ -14,6 +14,8 @@ Vagrant.configure("2") do |config|
   config.vm.boot_timeout = 400
 
   config.vm.provision "shell", inline: <<-SHELL
+    export DEBIAN_FRONTEND=noninteractive
+
     apt update && apt upgrade -y
 
     apt-get install -y wget gnupg2 curl lsb-release
@@ -22,6 +24,10 @@ Vagrant.configure("2") do |config|
     curl -fsSL https://enterprise.proxmox.com/debian/proxmox-ve-release-6.x.gpg | tee /etc/apt/trusted.gpg.d/proxmox.asc
 
     apt-get update -y
+
+    echo "postfix postfix/main_mailer_type string 'Internet Site'" | debconf-set-selections
+    echo "postfix postfix/mailname string 'proxmoxer.local'" | debconf-set-selection
+
     apt-get install -y proxmox-ve postfix open-iscsi
 
     systemctl enable pvedaemon
