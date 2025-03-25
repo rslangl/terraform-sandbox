@@ -1,2 +1,6 @@
 .vagrant/
-ssh/*
+ssh/
+terraform.tfstate.d/
+
+# the output name I use without thinking
+plan
