@@ -30,6 +30,7 @@ resource "proxmox_virtual_environment_file" "vm_cloud_config" {
 resource "proxmox_virtual_environment_vm" "vm" {
   name = "dev"
   node_name = "wintermute"
+  #node_name = var.pve_config[terraform.workspace].node_name
   tags = ["terraform"]
   
   agent {

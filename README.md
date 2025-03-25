@@ -18,9 +18,22 @@ nix --extra-experimental-features "nix-command flakes" search nixpkgs terraform
 ```shell
 # Launch nix-shell
 nix-shell
+```
 
+For local development (no phyiscal target hardware):
+```shell
 # launch Vagrant:
 vagrant up --provider=qemu
+
+# use dev workspace
+terraform workspace select dev
+terraform apply -var-file=dev.tfvars
+```
+
+For a physical target platform:
+```shell
+terraform workspace select staging
+terraform apply -var-file=staging.tfvars
 ```
 
 ## References
