@@ -2,7 +2,6 @@ variable "pve_config" {
   type = map(object({
       endpoint = string
       username = string
-      password = string
       node_name = string
     }))
   description = "Proxmox VE connection configuration"
@@ -17,8 +16,8 @@ variable "pve_config" {
 #  type = string
 #  default = "root@pam"
 #}
-#
-#variable "pve_password" {
-#  type = string
-#  sensitive = true
-#}
+
+variable "pve_password" {
+  type = string
+  sensitive = true
+}
